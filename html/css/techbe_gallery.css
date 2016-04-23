@@ -1,0 +1,120 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+.defs {
+  display: none;
+}
+
+/*text*/
+p, h1, h2, h3 {
+  font-size: 12px;
+}
+
+/*layout*/
+#title {
+  margin: 20px auto;
+}
+#title h1 a {
+  overflow: hidden;
+  display: block;
+  width: 176px;
+  height: 46px;
+  margin: 0px auto;
+  text-align: center;
+  letter-spacing: 0.3em;
+}
+#title h1 a #title-first {
+  display: inline;
+  float: left;
+  margin-top: 10px;
+}
+#title h1 a #title-second {
+  display: inline;
+  float: right;
+  margin-top: 10px;
+}
+#title h1 a .icon {
+  width: 20px;
+  height: 40px;
+}
+
+/*color*/
+body.gallery {
+  background: url("../img/bg_dot.png"), #333835;
+  background-repeat: repeat;
+  background-size: 4px 4px;
+  box-shadow: 0px 0px 2px 2px #000 inset;
+}
+body.gallery p, body.gallery h1, body.gallery h2, body.gallery h3, body.gallery a {
+  color: #9be0da;
+}
+body.gallery #title h1 a {
+  text-decoration: none;
+}
+body.gallery #title h1 a .icon {
+  fill: #9be0da;
+}
+body.gallery #title h1 a :hover {
+  color: #fff;
+}
+body.gallery #title h1 a :hover .icon {
+  fill: #fff;
+}

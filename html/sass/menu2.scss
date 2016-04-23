@@ -1,0 +1,235 @@
+@charset "utf-8";
+
+@import "compass";
+ 
+@import "compass/reset";
+
+
+//media
+$smal: "only screen and (max-width: 640px)";
+$middle: "only screen and (min-width: 641px) and (max-width: 959px)";
+$large: "only screen and (min-width: 960px)";
+
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #222;
+}
+.defs{
+  display: none;
+}
+
+#blackout {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left:0;
+  background: #222;
+  opacity: 0;
+  z-index: 100;
+  @include transition(opacity 0.1s ease);
+  &.active {
+    display: block;
+    opacity: 0.95;
+  }
+}
+
+#menubutton {
+  display: block;
+  width: 42px;
+  height:42px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 200;
+  & span {
+    display: block;
+    background: #fff;
+    width: 24px;
+    height: 2px;
+    position: absolute;
+    left: 9px;
+    @include border-radius(1px);
+    @include transition(all 0.2s);
+    &:first-child {
+      top: 12px;
+    }
+    &:nth-child(2) {
+      margin-top: -1px;
+      top: 50%;
+    }
+    &:last-child {
+      bottom: 12px;
+    }
+  }
+  &.close span {
+    &:first-child {
+      @include simple-transform(1, 45deg, 5px, 6px, 0, 0, 50%, 50%);
+    }
+    &:nth-child(2) {
+      opacity: 0;
+    }
+    &:last-child {
+      @include simple-transform(1, -45deg, 5px, -6px, 0, 0, 50%, 50%);
+    }
+  }
+}
+
+
+/*
+#header-menu {
+  position: fixed;
+  width: 486px;
+  height: 486px;
+  top:-100%;
+  left:50%;
+  z-index: 101;
+  @include simple-transform(1.1, 0, -46%, -46%, 0, 0, 50%, 50%);
+  opacity: 0.0;
+  @include transition(opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s);
+  & ul {
+    & li {
+      & a {
+        display: inline;
+        position: relative;
+        width: 120px;
+        height: 120px;
+        float: left;
+        margin: 20px;
+        border: solid 1px #aaa;
+        @include border-radius(8px);
+        text-decoration: none;
+        color: #aaa;
+        fill: #aaa;
+        & p {
+          display: inline;
+          position: absolute;
+          top:50%;
+          left: 50%;
+          @include translate(-50%, -50%);
+        }
+        @include transition(color 0.1s, border 0.1s, fill 0.1s);
+        &:hover {
+          border: solid 1px #ffff55;
+          color: #ff5;
+          fill: #ff5;
+        }
+      }
+    }
+  }
+  &.active {
+    top:50%;
+    @include simple-transform(1, 0, -50%, -50%, 0, 0, 50%, 50%);
+    opacity: 1.0;
+  }
+
+}
+*/
+#header-menu {
+  display: block;
+  position: fixed;
+  width: 100%;
+  height: 36px;
+  z-index: 101;
+//  box-shadow: 1px 1px 1px 1px #000;
+  & ul {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 36px;
+    & li{
+      display: block;
+      position: relative;
+      float: left;
+      width: 10%;
+      height: 36px;
+
+      & a {
+        position: absolute;
+        @include box-sizing(border-box);
+        top:0;
+        left:0;
+        width: 100%;
+        height: 36px;
+        border-left: 1px solid #222;
+        border-top: 1px solid #fff;
+        text-decoration: none;
+        color: #fff;
+        background: #666;
+        @include transition(background 0.3s ease, height 0.3s ease, border 0.3s ease);
+        &:after {
+          content: "";
+          display: inline;
+          position: absolute;
+          top: 0px;
+          left: 0%;
+          width: 100%;
+          height: 0;
+          background: #eee;
+          @include transition(background-color 0.3s ease, height 0.3s ease, border 0.3s ease-in);
+        }
+        &:hover {
+          border-top:none; 
+          &:after {
+            height: 36px;
+            background: #777;
+            border-top:1px solid #fff; 
+          }
+          background: #000;
+          & p {
+          }
+        }
+        & p {
+          display: inline;
+          position: absolute;
+          top:50%;
+          left: 50%;
+          @include translate(-50%, -50%);
+          @include text-shadow(1px 1px 1px #000);
+          z-index: 102;
+        }
+      }
+    }
+  }
+}
+
+#content {
+  display: block;
+  overflow: hidden;
+  max-width: 600px;
+  width: 100%;
+  height: 1800px;
+  margin: 0 auto;
+  padding-top: 40px;
+  color: #fff;
+  & h1 {
+    margin: 20px 0 20px 0;
+  }
+  & p {
+    line-height: 1.2;
+    &:after {
+      display: block;
+      content: "";
+      width: 8px;
+      height: 2px;
+      margin: 16px 0px 16px 0px;
+      background: #fff;
+    }
+  }
+
+  & a {
+    color: #aaa;
+    text-decoration: none;
+  }
+  @media only screen and (max-width: 640px) {
+    width: 80%;
+    margin: 0 10%;
+  }
+
+}
+

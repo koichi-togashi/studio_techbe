@@ -1,0 +1,310 @@
+@charset "utf-8";
+
+@import "compass";
+ 
+@import "compass/reset";
+
+
+//media
+$smal: "only screen and (max-width: 640px)";
+$middle: "only screen and (min-width: 641px) and (max-width: 959px)";
+$large: "only screen and (min-width: 960px)";
+
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: #222;
+}
+.defs{
+  display: none;
+}
+
+#blackout {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left:0;
+  background: #222;
+  opacity: 0;
+  z-index: 100;
+  @include transition(opacity 0.1s ease);
+  &.active {
+    display: block;
+    opacity: 0.95;
+  }
+}
+
+#menubutton {
+  display: block;
+  width: 42px;
+  height:42px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 200;
+  & span {
+    display: block;
+    background: #fff;
+    width: 24px;
+    height: 2px;
+    position: absolute;
+    left: 9px;
+    @include border-radius(1px);
+    @include transition(all 0.2s);
+    &:first-child {
+      top: 12px;
+    }
+    &:nth-child(2) {
+      margin-top: -1px;
+      top: 50%;
+    }
+    &:last-child {
+      bottom: 12px;
+    }
+  }
+  &.close span {
+    &:first-child {
+      @include simple-transform(1, 45deg, 5px, 6px, 0, 0, 50%, 50%);
+    }
+    &:nth-child(2) {
+      opacity: 0;
+    }
+    &:last-child {
+      @include simple-transform(1, -45deg, 5px, -6px, 0, 0, 50%, 50%);
+    }
+
+  }
+  
+}
+
+@media only screen and (min-width: 641px) {
+  #menubutton {
+    display: none;  
+  }
+}
+
+/*
+#header-menu {
+  position: fixed;
+  width: 486px;
+  height: 486px;
+  top:-100%;
+  left:50%;
+  z-index: 101;
+  @include simple-transform(1.1, 0, -46%, -46%, 0, 0, 50%, 50%);
+  opacity: 0.0;
+  @include transition(opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s);
+  & ul {
+    & li {
+      & a {
+        display: inline;
+        position: relative;
+        width: 120px;
+        height: 120px;
+        float: left;
+        margin: 20px;
+        border: solid 1px #aaa;
+        @include border-radius(8px);
+        text-decoration: none;
+        color: #aaa;
+        fill: #aaa;
+        & p {
+          display: inline;
+          position: absolute;
+          top:50%;
+          left: 50%;
+          @include translate(-50%, -50%);
+        }
+        @include transition(color 0.1s, border 0.1s, fill 0.1s);
+        &:hover {
+          border: solid 1px #ffff55;
+          color: #ff5;
+          fill: #ff5;
+        }
+      }
+    }
+  }
+  &.active {
+    top:50%;
+    @include simple-transform(1, 0, -50%, -50%, 0, 0, 50%, 50%);
+    opacity: 1.0;
+  }
+
+}
+*/
+  #header-menu {
+    position: fixed;
+    width: 80%;
+    top:-100%;
+    left:50%;
+    z-index: 101;
+    padding-top: 80%;
+    @include simple-transform(1.1, 0, -46%, -46%, 0, 0, 50%, 50%);
+    opacity: 0.0;
+    @include transition(opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s);
+    & ul {
+      position: absolute;
+      top:0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      & li {
+        &:nth-child(3n) { margin: 0 0 5% 0; }
+        &:last-child {margin: 0;}
+        display: block;
+        position: relative;
+        width: 30%;
+        height: 0%;
+        padding-top: 30%; 
+        float: left;
+        margin: 0 5% 5% 0;
+        & a {
+          position: absolute;
+          top: 0;
+          left: 0;
+          @include box-sizing(border-box);
+          width: 100%;
+          height: 100%;
+          border: solid 1px #aaa;
+          @include border-radius(8px);
+          text-decoration: none;
+          color: #aaa;
+          fill: #aaa;
+          @include transition(color 0.2s, border 0.2s, fill 0.2s);
+          &:hover {
+            border: solid 1px #ffff55;
+            color: #ff5;
+            fill: #ff5;
+          }
+          & p {
+            display: inline;
+            position: absolute;
+            top:50%;
+            left: 50%;
+            @include translate(-50%, -50%);
+          }
+
+          }        
+      }
+    }
+    &.active {
+      top:50%;
+      @include simple-transform(1, 0, -50%, -50%, 0, 0, 50%, 50%);
+      opacity: 1.0;
+    }
+
+  }
+
+
+@media only screen and (min-width: 641px) {
+  #header-menu {
+    position: fixed;
+    width: 30%;
+    top:40px;
+    left:0%;
+    z-index: 101;    
+    @include simple-transform(1, 0, 0, 0, 0, 0, 0, 0);
+    opacity: 1.0;
+    & ul {
+      position: absolute;
+      top:0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      & li {
+        display: block;
+        position: relative;
+        width: 160px;
+        height: 36px;
+        padding-top: 0%; 
+        float: right;
+        margin: 0;
+        &:nth-child(3n) { margin: 0; }
+        &:last-child {margin: 0;}
+        & a {
+          overflow: hidden;
+          position: absolute;
+          top: 0;
+          left: 0;
+          @include box-sizing(border-box);
+          width: 120px;
+          height: 36px;
+          border: solid 1px #222;
+          @include border-radius(0px);
+          text-decoration: none;
+          color: #aaa;
+          background: #333;
+          @include transition(color 0.2s, width 0.2s, background 0.2s);
+          &:hover {
+            width: 160px;
+            border: solid 1px #222;
+            color: #aaa;
+          }
+          & p {
+            display: inline;
+            position: absolute;
+            width: 140px;
+            height: 16px;
+            top: 0;
+            left: 0;
+            padding:10px;
+            @include translate(0%, 0%);
+            &:after {
+              content: "→";
+              position: absolute;
+              width: 40px;
+              height: 36px;
+              top:0px;
+              right:0px;
+              text-align: center;
+              line-height: 2em;
+              background: #444;
+            }
+          }
+
+          }        
+      }
+    }
+
+  }
+
+}
+
+#content {
+  display: block;
+  overflow: hidden;
+  width: 80%;
+  height: 1800px;
+  margin: 0 auto;
+  padding-top: 40px;
+  color: #fff;
+  & h1 {
+    margin: 0 0 20px 0;
+  }
+  & p {
+    line-height: 1.2;
+    &:after {
+      display: block;
+      content: "";
+      width: 8px;
+      height: 2px;
+      margin: 16px 0px 16px 0px;
+      background: #fff;
+    }
+  }
+  & a {
+    color: #aaa;
+    text-decoration: none;
+
+  }
+}
+
+  @media only screen and (min-width: 641px) {
+    #content {
+      width: 60%;
+      margin: 0% 5% 0% 35%;  
+    }    
+  }
